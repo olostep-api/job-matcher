@@ -4,7 +4,7 @@ import asyncio
 from pathlib import Path
 from typing import List
 
-from agent import run_agent_workflow
+from src.job_matcher.agent import run_agent_workflow
 from models.job import Job
 
 

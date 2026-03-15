@@ -21,7 +21,7 @@ This project helps you:
   - Inspect ranked jobs and full descriptions.
   - Download result JSON.
 - CLI one-shot runner (`run_matcher.py`)
-- Agents-based workflow orchestration (`agent.py`)
+- Agents-based workflow orchestration (`src/job_matcher/agent.py`)
 - JSON persistence with dedupe (`data/jobs.json`)
 
 ## Prerequisites
@@ -73,12 +73,6 @@ You can also use a PDF resume (`.pdf`).
 streamlit run app.py
 ```
 
-Compatibility entrypoint:
-
-```bash
-streamlit run main.py
-```
-
 ### CLI one-time run
 
 ```bash
@@ -107,13 +101,11 @@ All runtime data is written under `data/`.
 ```text
 .
 ├── app.py                         # Streamlit dashboard entrypoint
-├── main.py                        # Compatibility entrypoint (calls app.main)
 ├── run_matcher.py                 # CLI one-time runner
 ├── assets/
 │   ├── UI.png                     # Streamlit dashboard screenshot
 │   └── Thumbnail.png              # Olostep parser/search preview image
 ├── settings.py                    # App-level configuration (default resume path)
-├── agent.py                       # Workflow orchestration and agent tools
 ├── data/
 │   ├── jobs.json                  # Stored ranked jobs
 │   └── uploads/                   # Uploaded resumes
@@ -126,10 +118,11 @@ All runtime data is written under `data/`.
 │   └── scoring.py                 # Interview probability scoring
 ├── src/
 │   └── job_matcher/
+│       ├── agent.py               # Workflow orchestration and agent tools
 │       ├── constants.py           # Shared paths/defaults
 │       └── service.py             # Service wrapper around workflow
 └── utils/
-    ├── date_utils.py              # Date helpers (legacy support)
+    ├── date_utils.py              # Recency helper utilities
     └── pdf_to_markdown.py         # Fallback PDF text extraction
 ```
 
